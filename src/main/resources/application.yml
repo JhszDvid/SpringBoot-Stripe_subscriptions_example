@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: velemenyezz-api
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ISSUER_URI}
+          jwk-set-uri: ${JWK_SET_URI}
+  datasource:
+    url: jdbc:mysql://localhost:3306/review
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  keycloak:
+    admin:
+      clientId: ${KEYCLOAK_CLIENT_ID}
+      clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+    realm: ${KEYCLOAK_REALM}
+    serverUrl: http://localhost:8181
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+
+stripe:
+  session:
+    priceId: ${STRIPE_SESSION_PRICEID}
+  secret-key: ${STRIPE_SECRET_KEY}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+
+
